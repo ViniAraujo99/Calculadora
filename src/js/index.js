@@ -9,6 +9,7 @@ btnHist.addEventListener("click", () => {
   btnHist.classList.toggle("fa-x");
 });
 
+//Clear historic tab
 trashBtnHist.addEventListener("click", () => {
   historicList.innerHTML = "";
 });
@@ -22,6 +23,7 @@ let prev = "";
 let prevOperator;
 let total = 0;
 
+//Paths if os symbol or number
 function buttonClick(value) {
   if (isNaN(value)) {
     handleSymbol(value);
@@ -30,6 +32,7 @@ function buttonClick(value) {
   }
 }
 
+//Adding number to page content
 function handleNumber(number) {
   if (screenCurrent.textContent == 0 || screenCurrent.textContent == "") {
     screenCurrent.textContent = number;
@@ -38,6 +41,7 @@ function handleNumber(number) {
   }
 }
 
+//Handle symbol, this will decide what to do, with any symbol pressed (using dataset value)
 function handleSymbol(symbol) {
   switch (symbol) {
     case "cleanAll":
@@ -62,7 +66,7 @@ function handleSymbol(symbol) {
         return;
       }
 
-      flushOperation(parseFloat(screenCurrent.textContent));
+      calcOperation(parseFloat(screenCurrent.textContent));
       prevOperator = null;
       screenCurrent.textContent = total;
       total = 0;
@@ -91,6 +95,7 @@ function handleSymbol(symbol) {
   }
 }
 
+//
 function handleMath(symbol) {
   if (screenCurrent.textContent == 0 || screenCurrent.textContent === "") {
     return;
@@ -101,14 +106,15 @@ function handleMath(symbol) {
   if (total === 0) {
     total = intCalc;
   } else {
-    flushOperation(intCalc);
+    calcOperation(intCalc);
   }
 
   prevOperator = symbol;
   screenCurrent.textContent = "";
 }
 
-function flushOperation(value) {
+//Operations calcs
+function calcOperation(value) {
   if (prevOperator == "+") {
     updatePrev("+");
     total += value;
@@ -150,13 +156,18 @@ function flushOperation(value) {
   }
 }
 
+//Update screenPrev
 function updatePrev(op) {
   screenPrev.textContent = "";
-  if (op == "√" || op == "1 / ") screenPrev.textContent += prevOperator + prev;
-  else
+  if (op == "√" || op == "1 / ") {
+    screenPrev.textContent += prevOperator + prev;
+  } else if (op == " / 100" || op == "²") {
+    screenPrev.textContent += prev + prevOperator;
+  } else
     screenPrev.textContent += prev + prevOperator + screenCurrent.textContent;
 }
 
+//Create historic elements and add to list
 function addHistoric() {
   let li = document.createElement("li");
   li.setAttribute("dir", "ltr");
@@ -175,6 +186,7 @@ function addHistoric() {
   historicList.appendChild(li);
 }
 
+//Init
 function initCalc() {
   document.querySelector(".btnContainer").addEventListener("click", (e) => {
     buttonClick(e.target.dataset.key);

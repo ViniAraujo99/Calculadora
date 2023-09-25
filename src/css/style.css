@@ -87,6 +87,7 @@ body {
   height: 25%;
   font-size: 1rem;
   color: var(--gray);
+  padding: 5px 0;
 }
 
 .current {
@@ -357,12 +358,12 @@ body {
     gap: 50px;
   }
 
-  .prev {
-    padding: 10px 0;
-  }
-
   .current {
     font-size: 3.5vw;
+  }
+
+  .prev {
+    padding: 10px 0;
   }
 
   .historic {
