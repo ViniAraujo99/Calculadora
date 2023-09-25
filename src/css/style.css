@@ -1,0 +1,389 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Russo+One&display=swap");
+
+:root {
+  --bg: #2e323b;
+  --bgScreen: #3e434e;
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #8f8f8f;
+  --darkGray: #585858;
+  --darkerGray: #333333;
+  --lightGray: #c4c4c4;
+
+  --f1: "Bebas Neue", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--white);
+  font-family: var(--f1);
+  background-color: var(--lightGray);
+}
+
+.calc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg);
+  padding: 10px;
+  width: 90%;
+  position: relative;
+  overflow: hidden;
+}
+
+.functions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.histBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.histBtn i {
+  padding-left: 25px;
+  transition: 1s all;
+}
+
+.histBtn i:hover {
+  color: var(--gray);
+}
+
+.screen {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  background: var(--bgScreen);
+  margin: 5px 0 25px 0;
+}
+
+.prev {
+  height: 25%;
+  font-size: 1rem;
+  color: var(--gray);
+}
+
+.current {
+  height: 100%;
+  font-weight: 500;
+  font-size: 7vw;
+  white-space: nowrap;
+}
+
+.btnContainer {
+  width: 100%;
+  display: grid;
+  grid-template: repeat(6, 1fr) / repeat(4, 1fr);
+  gap: 5px;
+}
+
+.btnContainer button {
+  padding: 10px;
+  background-color: var(--darkGray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 0.75em;
+  width: 100%;
+  height: 100%;
+  transition: 1s all;
+  width: 100%;
+  border: none;
+  color: var(--white);
+}
+
+.btnContainer button:hover {
+  background-color: var(--darkerGray);
+}
+
+/*FUNCTIONS*/
+/* % */
+.btnContainer button:nth-child(1) {
+  grid-area: 1 / 1;
+}
+
+/* CE */
+.btnContainer button:nth-child(2) {
+  grid-area: 1 / 2;
+}
+
+/* C */
+.btnContainer button:nth-child(3) {
+  grid-area: 1 / 3;
+}
+
+/* DEL */
+.btnContainer button:nth-child(4) {
+  grid-area: 1 / 4;
+}
+.btnContainer button:nth-child(4):before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f55a";
+  display: inline-block;
+  padding-right: 3px;
+  vertical-align: middle;
+  font-weight: 900;
+}
+
+/* 1/x */
+.btnContainer button:nth-child(5) {
+  grid-area: 2 / 1;
+  font-size: 0.85rem;
+}
+.btnContainer button:nth-child(5) span {
+  font-size: 2rem;
+  align-self: flex-start;
+}
+
+/* x² */
+.btnContainer button:nth-child(6) {
+  grid-area: 2 / 2;
+  font-size: 2rem;
+}
+.btnContainer button:nth-child(6) span {
+  font-size: 1rem;
+}
+
+/* ²v- */
+.btnContainer button:nth-child(7) {
+  grid-area: 2 / 3;
+}
+.btnContainer button:nth-child(7):before {
+  font-family: "Font Awesome 5 Free";
+  content: "²\f698";
+  display: inline-block;
+  padding-right: 3px;
+  vertical-align: middle;
+  font-weight: 900;
+}
+
+/*NUMBERS*/
+/* +/- */
+.btnContainer button:nth-child(8) {
+  grid-area: 6 / 1;
+  font-size: 2rem;
+}
+
+/* , */
+.btnContainer button:nth-child(9) {
+  grid-area: 6 / 3;
+  font-size: 2rem;
+}
+
+/* 0 */
+.btnContainer button:nth-child(10) {
+  grid-area: 6 / 2;
+}
+
+/* 1 */
+.btnContainer button:nth-child(11) {
+  grid-area: 5 / 1;
+}
+
+/* 2 */
+.btnContainer button:nth-child(12) {
+  grid-area: 5 / 2;
+}
+
+/* 3 */
+.btnContainer button:nth-child(13) {
+  grid-area: 5 / 3;
+}
+
+/* 4 */
+.btnContainer button:nth-child(14) {
+  grid-area: 4 / 1;
+}
+
+/* 5 */
+.btnContainer button:nth-child(15) {
+  grid-area: 4 / 2;
+}
+
+/* 6 */
+.btnContainer button:nth-child(16) {
+  grid-area: 4 / 3;
+}
+
+/* 7 */
+.btnContainer button:nth-child(17) {
+  grid-area: 3 / 1;
+}
+
+/* 8 */
+.btnContainer button:nth-child(18) {
+  grid-area: 3 / 2;
+}
+
+/* 9 */
+.btnContainer button:nth-child(19) {
+  grid-area: 3 / 3;
+}
+
+/*OPERATORS*/
+/* / */
+.btnContainer button:nth-child(20) {
+  grid-area: 2 / 4;
+  font-size: 2rem;
+}
+
+/* x */
+.btnContainer button:nth-child(21) {
+  grid-area: 3 / 4;
+  font-size: 2rem;
+}
+
+/* + */
+.btnContainer button:nth-child(22) {
+  grid-area: 4 / 4;
+  font-size: 2rem;
+}
+
+/* - */
+.btnContainer button:nth-child(23) {
+  grid-area: 5 / 4;
+  font-size: 2rem;
+}
+
+/* = */
+.btnContainer button:nth-child(24) {
+  grid-area: 6 / 4;
+  font-size: 2rem;
+}
+
+.historic {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 2s ease-in-out;
+  padding: 20px;
+
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  text-align: end;
+}
+
+.historic-active {
+  bottom: 0%;
+}
+
+.title {
+  text-align: end;
+  text-transform: uppercase;
+}
+
+.historicListItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.historicList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+}
+
+.historicListItem {
+  align-items: flex-end;
+}
+
+.historicListItem span:nth-child(1) {
+  font-size: 1rem;
+  color: var(--gray);
+}
+
+.trash {
+  padding: 5px 0 0;
+}
+
+/*MEDIA QUERIES*/
+@media screen and (min-width: 720px) {
+  .calc {
+    max-height: 100%;
+    height: 590px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .histBtn i {
+    display: none;
+  }
+
+  .histBtn .title {
+    justify-content: flex-start;
+  }
+
+  .screen {
+    height: 135px;
+    gap: 50px;
+  }
+
+  .prev {
+    padding: 10px 0;
+  }
+
+  .current {
+    font-size: 3.5vw;
+  }
+
+  .historic {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    background: none;
+    padding: 0;
+    height: 100%;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+
+  .title {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 7px;
+  }
+
+  .historicList {
+    height: 100%;
+  }
+}
